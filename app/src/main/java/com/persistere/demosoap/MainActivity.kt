@@ -28,11 +28,11 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        btSomar.setOnClickListener {
+        btCalcular.setOnClickListener {
             CallWebService()
                     .execute(etNumero1.text.toString(),
                              etNumero2.text.toString(),
-                             "+")
+                             spOperacoes.selectedItem.toString())
         }
     }
 

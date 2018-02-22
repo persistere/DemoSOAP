@@ -15,6 +15,13 @@
         android:hint="Numero 1" />
 
 
+
+    <Spinner
+        android:entries="@array/operacoes"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/spOperacoes"/>
+
     <EditText
         android:id="@+id/etNumero2"
         android:layout_width="match_parent"
@@ -22,11 +29,12 @@
         android:inputType="textPersonName"
         android:hint="Numero 2" />
 
+
     <Button
-        android:id="@+id/btSomar"
+        android:id="@+id/btCalcular"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Somar" />
+        android:text="Calcular" />
 
     <TextView
         android:id="@+id/tvResultado"
