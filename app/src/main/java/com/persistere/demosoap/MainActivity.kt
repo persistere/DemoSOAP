@@ -3,6 +3,7 @@ package com.persistere.demosoap
 import android.os.AsyncTask
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
+import kotlinx.android.synthetic.main.activity_main.*
 import org.ksoap2.SoapEnvelope
 import org.ksoap2.serialization.PropertyInfo
 import org.ksoap2.serialization.SoapObject
@@ -15,8 +16,8 @@ class MainActivity : AppCompatActivity() {
     //No build.gradle DemoSOAP cahmamos o repositorio maven { url 'https://oss.sonatype.org/content/repositories/ksoap2-android-releases/' }
     // e no buil.gradle app chamamos o implementation 'com.google.code.ksoap2-android:ksoap2-android:3.6.2'
 
-    private val url = "http://pa02micro42:8080/CalculadoraWSService/CalculadoraWS?wsdl"
-    private val nameSpace = "http://heiderlopes.com.br"
+    private val url = "http://10.3.2.42:8080/CalculadoraWSService/CalculadoraWS?wsdl"
+    private val nameSpace = "http://heiderlopes.com.br/"
     private val methodName = "calcular"
     private val soapAction = nameSpace + methodName
     private val paramentro1 = "num1"
@@ -26,9 +27,21 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+
+        btSomar.setOnClickListener {
+            CallWebService()
+                    .execute(etNumero1.text.toString(),
+                             etNumero2.text.toString(),
+                             "+")
+        }
     }
 
     inner class CallWebService : AsyncTask<String, Void, String> () {
+
+        override fun onPostExecute(result: String?) {
+            tvResultado.text = result
+        }
+
         override fun doInBackground(vararg params: String?): String {
             var result = ""
             val soapObject = SoapObject(nameSpace, methodName)
