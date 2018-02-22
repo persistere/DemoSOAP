@@ -11,6 +11,10 @@ import org.ksoap2.transport.HttpTransportSE
 
 class MainActivity : AppCompatActivity() {
 
+    //NO PROGRAMA SOAP UI CRIAMOS O SOAP http://pa02micro42:8080/CalculadoraWSService/CalculadoraWS
+    //No build.gradle DemoSOAP cahmamos o repositorio maven { url 'https://oss.sonatype.org/content/repositories/ksoap2-android-releases/' }
+    // e no buil.gradle app chamamos o implementation 'com.google.code.ksoap2-android:ksoap2-android:3.6.2'
+
     private val url = "http://pa02micro42:8080/CalculadoraWSService/CalculadoraWS?wsdl"
     private val nameSpace = "http://heiderlopes.com.br"
     private val methodName = "calcular"
